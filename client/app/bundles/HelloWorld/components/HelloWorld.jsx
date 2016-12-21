@@ -15,7 +15,7 @@ export default class HelloWorld extends React.Component {
 
     // How to set initial state in ES6 class syntax
     // https://facebook.github.io/react/docs/reusable-components.html#es6-classes
-    this.state = { name: this.props.name };
+    // this.state = { name: this.props.name };
   }
 
   /*
@@ -25,8 +25,49 @@ export default class HelloWorld extends React.Component {
    * */
 
   render() {
-    return (
-      <div> Hello ReactJs Program</div>
+    console.log(this.props)
+    return(
+      <div>
+        <ProfilePic imageUrl={this.props.user.image}/>
+        <ProfileName name={this.props.user.name}/>
+        <ProfileLink username={this.props.user.username}/>
+      </div>
     );
+  }
+};
+
+class ProfilePic extends React.Component {
+  constructor(props, _railsContext) {
+    super(props);
+  }
+
+  render() {
+    return <img src={this.props.imageUrl} style={{height: 100, width: 100}}></img>
+  }
+}
+
+class ProfileLink extends React.Component {
+  constructor(props, _railsContext) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <a href={'https://www.github.com/' +  this.props.username}>
+          {this.props.username}
+        </a>
+      </div>
+    );
+  }
+}
+
+class ProfileName extends React.Component {
+  constructor(props, _railsContext) {
+    super(props);
+  }
+
+  render() {
+    return <div> {this.props.name} </div>
   }
 }

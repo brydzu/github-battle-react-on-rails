@@ -1,1 +1,11 @@
-<%= react_component("HelloWorld", props: @hello_world_props, prerender: false) %>
+<%
+user_data = {
+  user: {
+    name: 'Tyler McGinnis',
+    username: 'tylermcginnis',
+    image: 'https://avatars0.githubusercontent.com/u/2933430?v=3$s=460'
+  }
+}
+%>
+
+<%= react_component("HelloWorld", props: user_data, prerender: false) %>
