@@ -10,7 +10,6 @@ export default class ConfirmBattleContainer extends React.Component {
       isLoading: true,
       playersInfo: [],
     };
-    _railsContext.router
   }
 
   componentDidMount() {
