@@ -8,7 +8,7 @@ export default class ConfirmBattleContainer extends React.Component {
 
     this.state = {
       isLoading: true,
-      playerInfo: [],
+      playersInfo: [],
     };
     _railsContext.router
   }
@@ -22,14 +22,23 @@ export default class ConfirmBattleContainer extends React.Component {
           playersInfo: [players[0], players[1]]
         })
       }.bind(this))
+  }
 
+  handleInitiateBattle = () => {
+    this.context.router.push({
+      pathname: '/results',
+      state: {
+        playersInfo: this.state.playersInfo
+      }
+    })
   }
 
   render() {
     return (
       <ConfirmBattle
         isLoading={this.state.isLoading}
-        playersInfo={this.state.playersInfo}/>
+        onInitiateBattle={this.handleInitiateBattle}
+        playersInfo={this.state.playersInfo} />
     );
   }
 }
