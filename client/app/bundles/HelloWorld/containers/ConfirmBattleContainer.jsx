@@ -1,5 +1,6 @@
 import React from 'react';
 import ConfirmBattle from '../components/ConfirmBattle'
+import { getPlayersInfo } from '../utils/githubHelper'
 
 export default class ConfirmBattleContainer extends React.Component {
   constructor(props, _railsContext) {
@@ -14,6 +15,14 @@ export default class ConfirmBattleContainer extends React.Component {
 
   componentDidMount() {
     var query = this.props.location.query;
+    getPlayersInfo([query.playerOne, query.playerTwo])
+      .then(function (players) {
+        this.setState({
+          isLoading: false,
+          playersInfo: [players[0], players[1]]
+        })
+      }.bind(this))
+
   }
 
   render() {
